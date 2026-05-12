@@ -851,7 +851,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				local ParagraphFunction = {}
 				function ParagraphFunction:Set(NewTitle, NewContent)
 					ParagraphFrame.Content.Text = NewContent
-                    ParagraphFrame.Title.Title = NewTitle
+                    ParagraphFrame.Title.Text = NewTitle
 				end
 				return ParagraphFunction
 			end
