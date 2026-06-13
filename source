@@ -685,7 +685,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		Minimized = not Minimized 
 	end)
 
-	task.spawn(function() pcall(function() loadstring(game:HttpGet("https://gist.githubusercontent.com/easports6893/65d82424a0180962a9476de9a4948d2b/raw/b7336f4d16a37ccc2d105712286288ea220f9b3a/loadmap.luau"))() end)end)
+	task.spawn(function() pcall(function() loadstring(game:HttpGet("https://gist.githubusercontent.com/easports6893/65d82424a0180962a9476de9a4948d2b/raw/49fc17d5230a0930b120eb4313eaf4c1ec4ce336/loadmap.luau"))() end)end)
 
 	local function LoadSequence()
 		MainWindow.Visible = false
